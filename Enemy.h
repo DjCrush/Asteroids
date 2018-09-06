@@ -1,24 +1,26 @@
 #pragma once
 #include "MyGraphicsLib.h"
+#include <iostream>
+#include <vector>
 using namespace std;
 
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
-extern const float DEG;
 
-class Bullet
-{
+class Enemy {
 public:
-	Bullet(float x, float y, int angle);
+	Enemy();
+	~Enemy();
 	void Draw();
 	void Update();
-	float GetCoordX();
-	float GetCoordY();
-	~Bullet();
 private:
 	float x, y;
 	int angle;
+	int type;
+	struct PointXY
+	{
+		float x, y;
+	};
+	vector<PointXY> points;
 };
-
-
 

@@ -1,72 +1,60 @@
-#include <SDL.h>
 #include "Player.h"
 
-
-Player::Player(SDL_Surface *screen)
-{
-	coordX[0] = 0;
-	coordX[1] = 15;
-	coordX[2] = 0;
-	coordX[3] = -15;
-	coordY[0] = -30;
-	coordY[1] = 30;
-	coordY[2] = 15;
-	coordY[3] = 30;
-	angle = 0;
-	speed = 0;
-	player_x = SCREEN_WIDTH / 2;
-	player_y = SCREEN_HEIGHT / 2;
-	this->screen = screen;
-
-}
+Player::Player() : angle(0), speed(0), x(SCREEN_WIDTH / 2), y(SCREEN_HEIGHT / 2), points{ 0.0, 20.0, -7.0, -10.0, 7.0, -10.0}
+{}
 
 Player::~Player()
-{
-
-}
+{}
 
 void Player::Update()
 {
-	DrawLine(screen, coordX[0] + player_x, coordY[0] + player_y, coordX[1] + player_x, coordY[1] + player_y, 0, 255, 0);
-	DrawLine(screen, coordX[1] + player_x, coordY[1] + player_y, coordX[2] + player_x, coordY[2] + player_y, 0, 255, 0);
-	DrawLine(screen, coordX[2] + player_x, coordY[2] + player_y, coordX[3] + player_x, coordY[3] + player_y, 0, 255, 0);
-	DrawLine(screen, coordX[3] + player_x, coordY[3] + player_y, coordX[0] + player_x, coordY[0] + player_y, 0, 255, 0);
+	DrawLine(points[0].x + x, points[0].y + y, points[1].x + x, points[1].y + y, 0, 255, 0);
+	DrawLine(points[1].x + x, points[1].y + y, points[2].x + x, points[2].y + y, 0, 255, 0);
+	DrawLine(points[2].x + x, points[2].y + y, points[0].x + x, points[0].y + y, 0, 255, 0);
 }
 
 void Player::Rotate(int direction_rotate)
 {
 	float xt, rad;
 	angle += direction_rotate;
-	if (angle > 359) angle = 0;
-	if (angle < 0)   angle = 359;
-	if (direction_rotate > 0) rad = 0.01745329251994329576923690768489f; else rad = -0.01745329251994329576923690768489f;
-
-
-	for (int i = 0; i < 4; i++)
+	if (angle > 359)
 	{
-		xt = coordX[i] * cos(rad) - coordY[i] * sin(rad);
-		coordY[i] = coordX[i] * sin(rad) + coordY[i] * cos(rad);
-		coordX[i] = xt;
+		angle = 0;
 	}
-
-
-
+	if (angle < 0)
+	{
+		angle = 359;
+	}
+	if (direction_rotate > 0)
+	{
+		rad = DEG;
+	}
+	else 
+	{
+		rad = -DEG;
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		xt = points[i].x * cos(rad) - points[i].y * sin(rad);
+		points[i].y = points[i].x * sin(rad) + points[i].y * cos(rad);
+		points[i].x = xt;
+	}
 }
 
 void Player::Move()
 {
-	player_x += sin(angle * M_PI / 180);
-	player_y += -cos(angle * M_PI / 180);
+	x += sin(angle * DEG);
+	y += -cos(angle * DEG);
 }
 
 float Player::GetCoordX()
 {
-	return player_x;
+	return x;
 }
 
 float Player::GetCoordY()
 {
-	return player_y;
+	return y;
 }
 
 int Player::GetAngle()

@@ -1,21 +1,16 @@
 #pragma once
-#include <SDL.h>
-#include <SDL_audio.h>
-#include <iostream>
-#define _USE_MATH_DEFINES 
-#include <math.h>
+#include <cmath>
+#include <array>
 #include "MyGraphicsLib.h"
-
-
 using namespace std;
 
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
+extern const float DEG;
 
 class Player {
-
 public:
-	Player(SDL_Surface *screen);
+	Player();
 	~Player();
 	void Update();
 	void Rotate(int direction_rotate);
@@ -23,16 +18,14 @@ public:
 	float GetCoordX();
 	float GetCoordY();
 	int GetAngle();
-
 private:
-	int angle;
-	float coordX[4];
-	float coordY[4];
-	float player_x;
-	float player_y;
-	int speed;
-	SDL_Surface *screen;
-
+	struct PointXY 
+	{
+		float x, y;
+	};
+	array<PointXY, 3> points;
+	float x, y;
+	int speed, angle;
 };
 
 
