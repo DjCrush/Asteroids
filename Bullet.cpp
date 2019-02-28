@@ -1,7 +1,6 @@
 #pragma once
 #include "Bullet.h"
 
-
 Bullet::Bullet(double x, double y, int angle) : x(x), y(y), angle(angle) {}
 
 void Bullet::Update()
@@ -14,6 +13,7 @@ void Bullet::Draw()
 {
 	SetPixel(x, y, 255, 0, 0);
 }
+
 double Bullet::GetCoordX()
 {
 	return x;
