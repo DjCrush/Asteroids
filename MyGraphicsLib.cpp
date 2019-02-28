@@ -6,7 +6,6 @@ const int BPP = 4;
 const int DEPTH = 32;
 const float DEG = 0.01745329251994329576923690768489f;
 
-
 void ClearScreen()
 {
 	SDL_Rect desc = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
@@ -38,8 +37,6 @@ void DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Uint8 b)
 		}
 	}
 }
-
-
 
 void SetPixel(int x, int y, Uint8 r, Uint8 g, Uint8 b)
 {
