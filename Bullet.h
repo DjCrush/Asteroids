@@ -9,16 +9,12 @@ extern const double DEG;
 class Bullet
 {
 public:
-	Bullet(float x, float y, int angle);
+	Bullet(double x, double y, int angle);
 	void Draw();
 	void Update();
 	double GetCoordX();
 	double GetCoordY();
-	~Bullet();
 private:
-	float x, y;
+	double x, y;
 	int angle;
 };
-
-
-
