@@ -2,11 +2,7 @@
 #include "Bullet.h"
 
 
-Bullet::Bullet(float x, float y, int angle) : x(x), y(y), angle(angle)
-{}
-
-Bullet::~Bullet()
-{}
+Bullet::Bullet(double x, double y, int angle) : x(x), y(y), angle(angle) {}
 
 void Bullet::Update()
 {
@@ -18,12 +14,12 @@ void Bullet::Draw()
 {
 	SetPixel(x, y, 255, 0, 0);
 }
-float Bullet::GetCoordX()
+double Bullet::GetCoordX()
 {
 	return x;
 }
 
-float Bullet::GetCoordY()
+double Bullet::GetCoordY()
 {
 	return y;
 }
