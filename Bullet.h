@@ -4,7 +4,7 @@ using namespace std;
 
 extern const int SCREEN_WIDTH;
 extern const int SCREEN_HEIGHT;
-extern const float DEG;
+extern const double DEG;
 
 class Bullet
 {
@@ -12,8 +12,8 @@ public:
 	Bullet(float x, float y, int angle);
 	void Draw();
 	void Update();
-	float GetCoordX();
-	float GetCoordY();
+	double GetCoordX();
+	double GetCoordY();
 	~Bullet();
 private:
 	float x, y;
