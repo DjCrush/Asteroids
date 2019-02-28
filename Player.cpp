@@ -3,9 +3,6 @@
 Player::Player() : angle(0), speed(0), x(SCREEN_WIDTH / 2), y(SCREEN_HEIGHT / 2), points{ 0.0, 20.0, -7.0, -10.0, 7.0, -10.0}
 {}
 
-Player::~Player()
-{}
-
 void Player::Update()
 {
 	DrawLine(points[0].x + x, points[0].y + y, points[1].x + x, points[1].y + y, 0, 255, 0);
@@ -15,7 +12,7 @@ void Player::Update()
 
 void Player::Rotate(int direction_rotate)
 {
-	float xt, rad;
+	double xt, rad;
 	angle += direction_rotate;
 	if (angle > 359)
 	{
@@ -47,12 +44,12 @@ void Player::Move()
 	y += -cos(angle * DEG);
 }
 
-float Player::GetCoordX()
+double Player::GetCoordX()
 {
 	return x;
 }
 
-float Player::GetCoordY()
+double Player::GetCoordY()
 {
 	return y;
 }
