@@ -9,8 +9,8 @@ extern SDL_Surface* screen;
 
 struct vertex
 {
-	float x;
-	float y;
+	double x;
+	double y;
 };
 
 void SetPixel(int x, int y, Uint8 r, Uint8 g, Uint8 b);
