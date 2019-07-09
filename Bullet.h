@@ -1,10 +1,6 @@
 #pragma once
-#include "MyGraphicsLib.h"
+#include "GraphicsLib.h"
 using namespace std;
-
-extern const int SCREEN_WIDTH;
-extern const int SCREEN_HEIGHT;
-extern const double DEG;
 
 class Bullet
 {
