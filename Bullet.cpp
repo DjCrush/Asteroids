@@ -1,25 +1,26 @@
-#pragma once
 #include "Bullet.h"
 
-Bullet::Bullet(double x, double y, int angle) : x(x), y(y), angle(angle) {}
+Bullet::Bullet(SDL_Renderer* pRenderer, double dX, double dY, int nAngle) : 
+	m_pRenderer(pRenderer), m_dCoordX(dX), m_dCoordY(dY), m_iAngle(nAngle) {}
 
-void Bullet::Update()
+void Bullet::update()
 {
-	x += sin(angle * DEG) * 5;
-	y += -cos(angle * DEG) * 5;
+	m_dCoordX += sin(m_iAngle * M_PI / 180);
+	m_dCoordY += -cos(m_iAngle * M_PI / 180);
 }
 
-void Bullet::Draw()
+double Bullet::getCoordX() const
 {
-	SetPixel(x, y, 255, 0, 0);
+	return m_dCoordX;
 }
 
-double Bullet::GetCoordX()
+double Bullet::getCoordY() const
 {
-	return x;
+	return m_dCoordY;
 }
 
-double Bullet::GetCoordY()
+void Bullet::render() const
 {
-	return y;
+	SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+	SDL_RenderDrawPoint(m_pRenderer, m_dCoordX, m_dCoordY);
 }

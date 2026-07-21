@@ -1,16 +1,23 @@
-#pragma once
-#include "GraphicsLib.h"
-using namespace std;
+#ifndef BULLET_H
+#define BULLET_H
+
+#include <SDL.h>
+#include <cmath>
+#include "Ship.h"
 
 class Bullet
 {
 public:
-	Bullet(double x, double y, int angle);
-	void Draw();
-	void Update();
-	double GetCoordX();
-	double GetCoordY();
+	Bullet(SDL_Renderer* m_pRenderer, double dX, double dY, int nAngle);
+	void render() const;
+	void update();
+	double getCoordX() const;
+	double getCoordY() const;
 private:
-	double x, y;
-	int angle;
+	SDL_Renderer* m_pRenderer;
+	double m_dCoordX;
+	double m_dCoordY;
+	int m_iAngle;
 };
+
+#endif
